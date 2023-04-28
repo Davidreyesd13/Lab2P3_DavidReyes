@@ -7,7 +7,8 @@ void tringulo(int);
 int main()
 {
 	srand(time(NULL));
-	int opcion, fact,temp = 0;
+	int opcion, fact,temp = 0,cont=0;
+	bool flag = true;
 	int arregloaleatorio[10]{}, arreglofinal[10]{};
 	cout << "1.Ejercicio 1\n2.Ejercicio 2\n0.Salir ";
 	cin >> opcion;
@@ -37,20 +38,14 @@ int main()
 				}
 				
 			}
-			for (int j = 0; j < 10; j++)
-			{
-				cout << (char)arregloaleatorio[j];
-			}
 			//validacion de repeticion
-			
-			for (size_t i = 0; i < 10; i++)
-			{
-				for (size_t j = i+1; j < 10; j++)
-				{
-					if (arregloaleatorio[i]!=arregloaleatorio[j]) {
-						arreglofinal[i] = arregloaleatorio[i];
+			cont = 0;
+			for (int i = 0; i < 10; i++){
+				
+					if (arregloaleatorio[i]!=arregloaleatorio[i+1]) {
+						arreglofinal[cont] = arregloaleatorio[i];
+						cont++;
 					}
-				}
 			}
 			cout << "Arreglo final: " ;
 			for (int j = 0; j < 10; j++)
@@ -58,6 +53,11 @@ int main()
 				cout << (char)arreglofinal[j];
 			}
 			cout << endl;
+			for (int i = 0; i <10; i++)
+			{
+	
+			}
+
 			break;
 		case 2:
 			cout << "ingrese el numero que desea saber su factorial: ";
