@@ -1,13 +1,14 @@
 #include <iostream>
 #include<stdlib.h>
+#include<ctime>
 using namespace std;
 int factorial(int, int);
 void tringulo(int);
 int main()
 {
-	int opcion, fact, flag, sflag;
-	char ale[10]{};
-	char afinal[10]{};
+	srand(time(NULL));
+	int opcion, fact,temp = 0;
+	int arregloaleatorio[10]{}, arreglofinal[10]{};
 	cout << "1.Ejercicio 1\n2.Ejercicio 2\n0.Salir ";
 	cin >> opcion;
 	while (opcion != 0) {
@@ -15,28 +16,48 @@ int main()
 		case 1:
 			for (int i = 0; i < 10; i++)
 			{
-				ale[i] = 97 + rand() % (122 + 1 - 97);
+				arregloaleatorio[i] = 97 + rand() % (122 + 1 - 97);
 			}
 			cout << "Arreglo original: ";
 			for (int j = 0; j < 10; j++)
 			{
-				cout << ale[j];
+				cout << (char)arregloaleatorio[j];
 			}
 			cout << endl;
+			//meotodo para ordenar
 			for (int i = 0; i < 10; i++) {
-
-				flag = ale[i];
-				for (int j = 0; j < 10; j++) {
-					sflag = ale[j];
-					if (flag != sflag) {
-						afinal[i] = flag;
+				for (int j = i + 1; j < 10; j++)
+				{
+					if (arregloaleatorio[j] < arregloaleatorio[i]) {
+						temp = arregloaleatorio[i];
+						arregloaleatorio[i] = arregloaleatorio[j];
+						arregloaleatorio[j] = temp;
+						
 					}
 				}
+				
 			}
 			for (int j = 0; j < 10; j++)
 			{
-				cout << afinal[j];
+				cout << (char)arregloaleatorio[j];
 			}
+			//validacion de repeticion
+			
+			for (size_t i = 0; i < 10; i++)
+			{
+				for (size_t j = i+1; j < 10; j++)
+				{
+					if (arregloaleatorio[i]!=arregloaleatorio[j]) {
+						arreglofinal[i] = arregloaleatorio[i];
+					}
+				}
+			}
+			cout << "Arreglo final: " ;
+			for (int j = 0; j < 10; j++)
+			{
+				cout << (char)arreglofinal[j];
+			}
+			cout << endl;
 			break;
 		case 2:
 			cout << "ingrese el numero que desea saber su factorial: ";
@@ -70,5 +91,3 @@ void tringulo(int tam) {
 		cout << endl;
 	}
 }
-
-
